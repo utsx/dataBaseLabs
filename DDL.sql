@@ -17,9 +17,11 @@ CREATE TYPE УРОВЕНЬ AS ENUM (
 );
 
 CREATE TYPE ДОЛЖНОСТЬ AS ENUM (
-    'ГЛАВНЫЙ СУДЬЯ',
-    'СТАРШИЙ СУДЬЯ',
-    'МЛАДШИЙ СУДЬЯ'
+    'ГЛАВНЫЙ СУДЬЯ СОРЕВНОВАНИЙ',
+    'СТАРШИЙ СУДЬЯ ТУРА',
+    'СУДЬЯ МАТЧА',
+    'СУДЬЯ-ХРОНОМЕТРИСТ',
+    'СУДЬЯ-СТАТИСТИК'
     );
 
 CREATE TYPE ПРИВИЛЕГИЯ AS ENUM (
@@ -85,7 +87,7 @@ CREATE TABLE ПРАВИЛО
     ТЕКСТ TEXT NOT NULL
 );
 
-CREATE TABLE ПРАВИЛО_В_РЕГЛАМЕНЕТЕ
+CREATE TABLE ПРАВИЛО_В_РЕГЛАМЕНТЕ
 (
     ID_РЕГЛАМЕНТА INTEGER NOT NULL,
     ID_ПРАВИЛА    INTEGER NOT NULL,
@@ -117,7 +119,8 @@ CREATE TABLE ПРОТОКОЛ_МАТЧА
     ID_МАТЧА INTEGER NOT NULL UNIQUE,
     НАЧАЛО_МАТЧА DATE NOT NULL,
     КОНЕЦ_МАТЧА DATE NOT NULL,
-    ID_ПОБЕДИТЕЛЯ INTEGER
+    ID_ПОБЕДИТЕЛЯ INTEGER,
+    FOREIGN KEY (ID_МАТЧА) REFERENCES МАТЧ (ID)
 );
 
 

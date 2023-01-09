@@ -68,4 +68,3 @@ CREATE OR REPLACE FUNCTION УТВЕРЖДЕНИЕ_РЕГЛАМЕНТА() RETURNS
 
 CREATE TRIGGER УТВЕРЖДЕНИЕ_РЕГЛАМЕНТА BEFORE INSERT ON "РЕГЛАМЕНТ" FOR EACH ROW EXECUTE PROCEDURE УТВЕРЖДЕНИЕ_РЕГЛАМЕНТА();
 
-
